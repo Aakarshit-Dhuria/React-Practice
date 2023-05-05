@@ -9,8 +9,6 @@ function App() {
 			<h1>Hello from my first React app.</h1>
 			<p>This is also visible.</p>
 			<Expenses ></Expenses>
-
-			{/* <Expense /> */}
 		</div>
 	);
 }
