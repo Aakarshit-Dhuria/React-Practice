@@ -14,6 +14,20 @@ function Expenses(props) {
 		(expense) => expense.date.getFullYear() === Number(filteredYear)
 	);
 
+	// The other way of working with conditional content is to store the content based on the condition inside a variable, for eg here we have stored the default content in a variable and if the condition is true we change the content to the desired content.
+	let expenseContent = <p>No expenses found.</p>;
+
+	if (filteredExpenses.length > 0) {
+		expenseContent = filteredExpenses.map((expense) => (
+			<ExpenseItems
+				key={expense.id}
+				title={expense.title}
+				amount={expense.amount}
+				date={expense.date}
+			/>
+		));
+	}
+
 	return (
 		<div>
 			<Card className="expenses">
@@ -38,14 +52,33 @@ function Expenses(props) {
 
 				{/* We can also pre-filter the items and store the results in a
 				new array and display them. */}
-				{filteredExpenses.map((expense) => (
+				{/* {filteredExpenses.map((expense) => (
 					<ExpenseItems
 						key={expense.id}
 						title={expense.title}
 						amount={expense.amount}
 						date={expense.date}
 					/>
-				))}
+				))} */}
+
+				{/* Outputting content based on a condition */}
+				{/* We can use ternary operator for this */}
+				{/* {filteredExpenses.length === 0 ? (
+					<p>No Expenses found</p>
+				) : (
+					filteredExpenses.map((expense) => (
+						<ExpenseItems
+							key={expense.id}
+							title={expense.title}
+							amount={expense.amount}
+							date={expense.date}
+						/>
+					))
+				)} */}
+
+				{/* Another clean way of outputting conditional content is to move the conditional content outside the jsx code and store it in a variable and display it */}
+				{expenseContent}
+
 				{/* <ExpenseItems
 				title={expenses[0].title}
 				amount={expenses[0].amount}
