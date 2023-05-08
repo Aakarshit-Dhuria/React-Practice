@@ -60,10 +60,22 @@ const NewExpense = (props) => {
 			amount: '',
 			date: '',
 		});
+		toggleButton();
 	}
 
-	return (
-		<form onSubmit={submitHandler}>
+	const [buttonClicked, setButtonClicked] = useState(false);
+	let formContent = (
+		<div className="new-expense__actions">
+			<button onClick={toggleButton}>Add new expense</button>
+		</div>
+	);
+
+	function toggleButton() {
+		setButtonClicked(!buttonClicked);
+	}
+
+	if (buttonClicked) {
+		formContent = (
 			<div className="new-expense__controls">
 				<div className="new-expense__control">
 					<input
@@ -95,11 +107,17 @@ const NewExpense = (props) => {
 				</div>
 
 				<div className="new-expense__actions">
+					<button onClick={toggleButton}>Cancel</button>
+				</div>
+
+				<div className="new-expense__actions">
 					<button type="submit">Add new expense</button>
 				</div>
 			</div>
-		</form>
-	);
+		);
+	}
+
+	return <form onSubmit={submitHandler}>{formContent}</form>;
 };
 
 export default NewExpense;
