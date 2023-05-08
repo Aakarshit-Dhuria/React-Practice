@@ -2,6 +2,7 @@ import ExpenseItems from './ExpenseItems';
 import Card from '../Card';
 import ExpenseFilter from './ExpenseFilter';
 import { useState } from 'react';
+import ExpenseList from './ExpenseList';
 
 function Expenses(props) {
 	const [filteredYear, setFilteredYear] = useState('2020');
@@ -15,18 +16,18 @@ function Expenses(props) {
 	);
 
 	// The other way of working with conditional content is to store the content based on the condition inside a variable, for eg here we have stored the default content in a variable and if the condition is true we change the content to the desired content.
-	let expenseContent = <p>No expenses found.</p>;
+	// let expenseContent = <p>No expenses found.</p>;
 
-	if (filteredExpenses.length > 0) {
-		expenseContent = filteredExpenses.map((expense) => (
-			<ExpenseItems
-				key={expense.id}
-				title={expense.title}
-				amount={expense.amount}
-				date={expense.date}
-			/>
-		));
-	}
+	// if (filteredExpenses.length > 0) {
+	// 	expenseContent = filteredExpenses.map((expense) => (
+	// 		<ExpenseItems
+	// 			key={expense.id}
+	// 			title={expense.title}
+	// 			amount={expense.amount}
+	// 			date={expense.date}
+	// 		/>
+	// 	));
+	// }
 
 	return (
 		<div>
@@ -77,7 +78,9 @@ function Expenses(props) {
 				)} */}
 
 				{/* Another clean way of outputting conditional content is to move the conditional content outside the jsx code and store it in a variable and display it */}
-				{expenseContent}
+				{/* {expenseContent} */}
+
+				<ExpenseList items={filteredExpenses} />
 
 				{/* <ExpenseItems
 				title={expenses[0].title}
