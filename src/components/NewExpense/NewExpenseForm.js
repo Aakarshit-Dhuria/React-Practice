@@ -25,7 +25,7 @@ const NewExpense = (props) => {
 				title: event.target.value,
 			};
 		});
-		console.log(event.target.value);
+		// console.log(event.target.value);
 	}
 
 	function amountChangeHandler(event) {
@@ -34,7 +34,7 @@ const NewExpense = (props) => {
 			...userInput,
 			amount: event.target.value,
 		});
-		console.log(event.target.value);
+		// console.log(event.target.value);
 	}
 
 	function dateChangeHandler(event) {
@@ -43,7 +43,7 @@ const NewExpense = (props) => {
 			...userInput,
 			date: event.target.value,
 		});
-		console.log(event.target.value);
+		// console.log(event.target.value);
 	}
 
 	function submitHandler(event) {
@@ -52,8 +52,8 @@ const NewExpense = (props) => {
 			...userInput,
 			date: new Date(userInput.date),
 		};
-		console.log('In Expense Form');
-		console.log(enteredData);
+		// console.log('In Expense Form');
+		// console.log(enteredData);
 		props.onSaveExpenseData(enteredData);
 		setUserInput({
 			title: '',
