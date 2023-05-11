@@ -3,6 +3,7 @@ import Card from '../Card';
 import ExpenseFilter from './ExpenseFilter';
 import { useState } from 'react';
 import ExpenseList from './ExpenseList';
+import ExpensesChart from './ExpensesChart';
 
 function Expenses(props) {
 	const [filteredYear, setFilteredYear] = useState('2020');
@@ -36,6 +37,9 @@ function Expenses(props) {
 					selected={filteredYear}
 					onChangeFilter={filterChangeHandler}
 				/>
+
+				<ExpensesChart expenses={filteredExpenses} />
+
 				{/* We add key prop to help react uniquely identify each item, so that whenever it makes an update it doesnt have to update each item in the list, and only update the required item. */}
 				{/* {props.expenses
 					.filter(
